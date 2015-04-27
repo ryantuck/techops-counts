@@ -25,16 +25,38 @@
         .cookies { background: #F5D0A9; }
 
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            var lastOutage = new Date(2015,2,25);
+            var lastCookies = new Date(2015,3,21);
+            
+            console.log(lastOutage);
+            console.log(lastCookies);
+
+            var now = new Date();
+            console.log(now);
+            var oneDay  = 24*60*60*1000;
+
+            var outageDiff = Math.abs((now - lastOutage) / oneDay);
+            var cookieDiff = Math.abs((now - lastCookies) / oneDay);
+            
+            $('#outageDays').text(Math.floor(outageDiff));
+            $('#cookieDays').text(Math.floor(cookieDiff));
+
+        });
+    </script>
 </head>
 
 <body>
     <div class="half left outage">
         <h2>Dayz Since Last Outage</h2>
-        <h1>30</h1>
+        <h1 id="outageDays">30</h1>
     </div>
     <div class="half right cookies">
         <h2>days since kirstin made cookies</h2>
-        <h1 style="color:red">3</h1>
+        <h1 id="cookieDays">3</h1>
     </div>
 </body>
 
